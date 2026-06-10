@@ -23,3 +23,6 @@ def random_event(player):
 
     elif stat == "happiness":
         player.happiness += amount
+
+    elif stat == "stress":
+        player.stress += amount
