@@ -4,12 +4,15 @@ A university life simulation game written in Python.
 
 ## Features
 
-- Multiple majors
-- Resource management
-- Random events
+- Difficulty Levels
+- GPA System
+- Midterms and Finals
+- Internship Opportunities
+- Shop and Inventory
 - Achievements
-- Multiple endings
-- Object-oriented design
+- Resume Score
+- Data Tracking
+- Semester Performance Graph
 
 ## Technologies
 
