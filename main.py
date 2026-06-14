@@ -1,24 +1,9 @@
-
+from dashboard import show_dashboard
 from player import Player
 from events import random_event
 from achievements import check_achievements
 from data import MAJORS
-import matplotlib.pyplot as plt
-
-def show_graphs(player):
-    weeks = range(1, len(player.grades_history)+1)
-
-    plt.figure(figsize=(8,5))
-    plt.plot(weeks, player.grades_history, label="Grades")
-    plt.plot(weeks, player.health_history, label="Health")
-    plt.plot(weeks, player.money_history, label="Money")
-    plt.plot(weeks, player.stress_history, label="Stress")
-    plt.title("Student Journey Through The Semester")
-    plt.xlabel("Week")
-    plt.ylabel("Value")
-    plt.legend()
-    plt.grid(True)
-    plt.show()
+import player
 
 def play_game():
     print("="*50)
@@ -76,10 +61,10 @@ def play_game():
                 else:
                     print("Application rejected.")
 
-        print("\n1. Study")
-        print("2. Part-Time Job")
-        print("3. Rest")
-        print("4. Hang Out")
+        print("\n1. Study (+10 Grades, -5 Health, -5 Happiness, +10 Stress)")
+        print("2. Part-Time Job (+150 Money, -10 Health, -5 Happiness, +5 Stress)")
+        print("3. Rest (+15 Health, +10 Happiness, -15 Stress)")
+        print("4. Hang Out (+15 Happiness, +1 Friend, -50 Money, -10 Stress)")
         print("5. Campus Shop")
 
         action=input("Choose: ")
@@ -98,7 +83,6 @@ def play_game():
         random_event(p)
         check_achievements(p)
 
-        p.record_week()
 
         if p.health<=0 or p.stress>=150:
             print("\n😫 BURNOUT ENDING")
@@ -128,7 +112,9 @@ def play_game():
     else:
         print("📈 Needs Improvement!")
 
+    print('\n========== SEMESTER REPORT ==========' )
     p.show_stats()
+    show_dashboard(p, week)
 
     if p.grades>=90 and p.health>=80 and p.happiness>=80:
         print("\n🌟 LEGENDARY STUDENT ENDING 🌟")
@@ -139,7 +125,6 @@ def play_game():
     else:
         print("\n😭 FAILED SEMESTER")
 
-    show_graphs(p)
 
 while True:
     play_game()

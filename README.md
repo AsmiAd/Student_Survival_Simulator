@@ -12,7 +12,6 @@ A university life simulation game written in Python.
 - Achievements
 - Resume Score
 - Data Tracking
-- Semester Performance Graph
 
 ## Technologies
 
